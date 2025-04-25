@@ -1,6 +1,6 @@
 import {motion, useMotionValue, useTransform, animate} from 'framer-motion';
 import Nav from './components/nav';
-// import SplashCursor from './blocks/Animations/SplashCursor/SplashCursor';
+import SplashCursor from './blocks/Animations/SplashCursor/SplashCursor';
 import test from './assets/test.jpg';
 import test2 from './assets/test2.webp';
 import TiltedCard from './blocks/Components/TiltedCard/TiltedCard';
@@ -30,7 +30,7 @@ function App() {
   return (
     <>
     <Nav/>
-    {/* <SplashCursor /> */}
+    <SplashCursor />
     <section id='home' className="w-full h-dvh bg-gradient-to-b from-[#2c2c6d] to-black flex flex-col items-center justify-center fira">
       <div className='h-24'></div>
       <div className="flex justify-between items-center px-8 w-2/3">
