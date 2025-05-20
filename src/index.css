@@ -9,6 +9,7 @@
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 .iceland {
@@ -22,5 +23,15 @@
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 400;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
