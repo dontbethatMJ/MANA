@@ -1,4 +1,4 @@
-import {motion, useMotionValue, useTransform, animate, useScroll} from 'framer-motion';
+import {motion, useMotionValue, useTransform, animate, useScroll, useDragControls} from 'framer-motion';
 import { useState, useEffect } from 'react';
 import bgvd from './assets/bgvd.mp4';
 import bgimg from './assets/bgimg.png';
@@ -20,6 +20,7 @@ import unreal from './assets/Unreal Engine1.svg';
 import vive from './assets/Vive.svg'; 
 import TiltedCard from './blocks/Components/TiltedCard/TiltedCard';
 import { FaLinkedin, FaDiscord, FaTwitter, FaGithub, FaYoutube } from 'react-icons/fa';
+import ContactForm from './components/ContactForm';
 
 function Counter({ end }: { end: number }) {
   const count = useMotionValue(0);
@@ -42,8 +43,35 @@ function Counter({ end }: { end: number }) {
 function App() {
   const [isVideoEnded, setIsVideoEnded] = useState(false);
   const [hasSeenVideo, setHasSeenVideo] = useState(true);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const dragControls = useDragControls();
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0); // Reset the end touch
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      setIsContactOpen(true);
+    }
+  };
 
   useEffect(() => {
     const hasWatched = localStorage.getItem('hasWatchedIntro');
@@ -55,7 +83,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!isVideoEnded) {
+    if (isContactOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -63,7 +91,7 @@ function App() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isVideoEnded]);
+  }, [isContactOpen]);
 
   const handleVideoEnd = () => {
     setIsVideoEnded(true);
@@ -123,7 +151,12 @@ function App() {
   
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {!hasSeenVideo && (
         <motion.div 
           initial={{ opacity: 1 }}
@@ -145,11 +178,30 @@ function App() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: isVideoEnded ? 1 : 0 }}
-        transition={{ duration: 1.5 }}
+        animate={{ 
+          opacity: isVideoEnded ? 1 : 0,
+          x: isContactOpen ? '40%' : 0
+        }}
+        transition={{ 
+          duration: 1.5,
+          x: {
+            type: "spring",
+            damping: 25,
+            stiffness: 200
+          }
+        }}
         className="scrollbar-hide"
+        drag="x"
+        dragControls={dragControls}
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.1}
+        onDragEnd={(_, info) => {
+          if (info.offset.x > 100) {
+            setIsContactOpen(true);
+          }
+        }}
       >
-        <Nav isVideoEnded={isVideoEnded}/>
+        <Nav isVideoEnded={isVideoEnded} onContactClick={() => setIsContactOpen(true)}/>
         <section id='home' className="w-full h-dvh relative flex flex-col items-center justify-center fira overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full z-0">
             <img 
@@ -522,6 +574,11 @@ function App() {
 
         </section>
       </motion.div>
+
+      <ContactForm 
+        isOpen={isContactOpen} 
+        onClose={() => setIsContactOpen(false)} 
+      />
 
       <motion.div 
         className="fixed bottom-8 right-8 z-50 w-12 h-12"
