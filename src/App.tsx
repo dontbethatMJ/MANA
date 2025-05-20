@@ -1,4 +1,4 @@
-import {motion, useMotionValue, useTransform, animate, useScroll, useDragControls} from 'framer-motion';
+import {motion, useMotionValue, useTransform, animate, useScroll, useDragControls, EventInfo} from 'framer-motion';
 import { useState, useEffect } from 'react';
 import bgvd from './assets/bgvd.mp4';
 import bgimg from './assets/bgimg.png';
@@ -20,7 +20,44 @@ import unreal from './assets/Unreal Engine1.svg';
 import vive from './assets/Vive.svg'; 
 import TiltedCard from './blocks/Components/TiltedCard/TiltedCard';
 import { FaLinkedin, FaDiscord, FaTwitter, FaGithub, FaYoutube } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ContactForm from './components/ContactForm';
+import projectest from './assets/projectest.png';
+import projectgrad from './assets/projectgrad.png';
+
+// Add project interface and list
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+const projects: Project[] = [
+  {
+    id: 1,
+    title: "Project One",
+    description: "A revolutionary XR experience that pushes the boundaries of virtual reality.",
+    image: projectest,
+    link: "https://project1.com"
+  },
+  {
+    id: 2,
+    title: "Project Two",
+    description: "An immersive game that combines stunning visuals with engaging gameplay.",
+    image: projectest,
+    link: "https://project2.com"
+  },
+  {
+    id: 3,
+    title: "Project Three",
+    description: "A cutting-edge AR application that transforms how we interact with our environment.",
+    image: projectest,
+    link: "https://project3.com"
+  },
+  // Add more projects as needed
+];
 
 function Counter({ end }: { end: number }) {
   const count = useMotionValue(0);
@@ -49,6 +86,7 @@ function App() {
   const dragControls = useDragControls();
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [currentProject, setCurrentProject] = useState(0);
 
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
@@ -149,6 +187,29 @@ function App() {
     { image: null, visibleOn: "both" }
   ];
   
+  const getRandomColor = () => {
+    const colors = [
+      '#FF6B6B',
+      '#4ECDC4',
+      '#45B7D1',
+      '#96CEB4',
+      '#FFEEAD',
+      '#D4A5A5',
+      '#9B59B6',
+      '#3498DB',
+      '#E67E22',
+      '#2ECC71',
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
+
+  const nextProject = () => {
+    setCurrentProject((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+  };
 
   return (
     <div 
@@ -286,7 +347,7 @@ function App() {
           <motion.div className='bg-[#181818] w-full h-full rounded-3xl p-8 md:p-16 border-[1px] border-[#ffffff1a] relative overflow-hidden'>
             <div className="absolute -top-32 -left-32 w-64 md:w-80 h-80 rounded-full bg-gradient-to-br from-[#DE5068] to-[#1313db] opacity-25 blur-3xl pointer-events-none" />
             <div className="relative">
-              <h1 className='text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4'>BUILT DIFFERENT</h1>
+              <h1 className='text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4'>WE ARE BUILT DIFFERENT</h1>
               <p className='text-[0.75rem] md:text-lg text-white/80 leading-relaxed md:text-justify'>
                 While others chase trends, we focus on what actually works – immersive XR, unforgettable games, and 3D worlds built with precision. Our team of wizards <span className='italic'>(yes, we call them that)</span> thrives on innovation, precision, and a touch of magic—delivering not just projects, but unforgettable digital experiences. No empty promises, just exceptional craft and honest collaboration. <br/><br/> The secret? We care about the <span className='font-bold italic'>how</span> as much as the <span className='font-bold italic'>wow</span>. <br/> <a href='#projects' className='underline'>Check out our work</a>
               </p>
@@ -295,7 +356,7 @@ function App() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="flex gap-4 mt-4 justify-center md:justify-start"
+                className="flex gap-4 mt-4 justify-center"
               >
                 <motion.a 
                   href="https://linkedin.com" 
@@ -394,11 +455,11 @@ function App() {
         </section>
 
         <section id='services' className='w-full h-full bg-black py-28 md:py-[4.5rem] px-6 md:px-32'>
-          <motion.h1
+        <motion.h1 
             style={{ position: 'relative' }}
             whileInView={{ y: [20, 0] }}
             transition={{ type: 'spring', stiffness: 50 }}
-            className='text-white p-4 text-2xl md:text-3xl iceland'><span className='text-[#3c3cdd]'>&gt;&gt;&gt;</span> What we offer</motion.h1>
+            className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>Our Services</motion.h1>
           
           <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 px-4 md:px-8">
             <div className="w-full aspect-square max-w-[200px] sm:max-w-[250px] md:max-w-[300px] mx-auto">
@@ -528,8 +589,11 @@ function App() {
               {tools.map((tool, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ scale: 0.9 }}
-                  className="aspect-square bg-[#181818] rounded-xl border-[1px] border-[#ffffff1a] flex items-center justify-center overflow-hidden"
+                  className="aspect-square bg-[#181818] rounded-xl border-[1px] border-[#ffffff1a] flex items-center justify-center overflow-hidden relative group"
+                  whileHover={{
+                    boxShadow: `0 0 35px 5px ${getRandomColor()}60`,
+                    transition: { duration: 0.3 }
+                  }}
                 >
                   {tool.image && (
                     <img
@@ -550,18 +614,71 @@ function App() {
                 </motion.div>
               ))}
             </div>
-
           </div>
         </section>
 
-        <section id='projects' className='bg-black w-full h-dvh py-24 md:py-[4.5rem] px-6 md:px-32'>
-          <motion.h1 
+        <section id='projects' className='bg-black w-full h-full py-40 md:py-20 px-6 md:px-32'>
+        <motion.h1 
             style={{ position: 'relative' }}
             whileInView={{ y: [20, 0] }}
             transition={{ type: 'spring', stiffness: 50 }}
-            className='text-white p-4 text-2xl md:text-3xl iceland'><span className='text-[#3c3cdd]'>&gt;&gt;&gt;</span> Our Works</motion.h1>
-          <div className='border-2 w-full h-full'>
+            className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>Projects</motion.h1>
+          
+          <div className='w-full h-[calc(100%-8rem)] flex items-center justify-center relative'>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={prevProject}
+              className="absolute left-0 z-10 text-red-500/80 hover:text-red-500 transition-colors"
+            >
+              <IoIosArrowBack size={40} />
+            </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={nextProject}
+              className="absolute right-0 z-10 text-red-500/80 hover:text-red-500 transition-colors"
+            >
+              <IoIosArrowForward size={40} />
+            </motion.button>
 
+            <motion.div
+              key={currentProject}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className="w-full max-w-3xl aspect-[4/3] relative group"
+            >
+              <div className="relative w-full h-full rounded-xl overflow-hidden">
+                <img
+                  src={projects[currentProject].image}
+                  alt={projects[currentProject].title}
+                  className="w-full h-full object-cover"
+                />
+                <motion.img
+                  src={projectgrad}
+                  alt="gradient overlay"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <div className="absolute bottom-0 left-0 right-0 flex flex-row items-center justify-around p-6 font-mono">
+                  <h3 className="text-sm md:text-xl font-bold text-black">
+                    {projects[currentProject].title}
+                  </h3>
+                  <motion.a
+                    href={projects[currentProject].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-block bg-black text-white px-6 py-2 rounded-full text-[0.6rem] md:text-sm font-medium hover:bg-opacity-90 transition-colors"
+                  >
+                    View Project
+                  </motion.a>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -570,7 +687,7 @@ function App() {
             style={{ position: 'relative' }}
             whileInView={{ y: [20, 0] }}
             transition={{ type: 'spring', stiffness: 50 }}
-            className='text-white p-4 text-2xl md:text-3xl iceland'><span className='text-[#3c3cdd]'>&gt;&gt;&gt;</span> Our Happy Clients</motion.h1>
+            className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>Our Happy Clients</motion.h1>
 
         </section>
       </motion.div>
