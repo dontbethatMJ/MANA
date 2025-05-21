@@ -1,4 +1,4 @@
-import {motion, useMotionValue, useTransform, animate, useScroll, useDragControls, EventInfo} from 'framer-motion';
+import {motion, useMotionValue, useTransform, animate, useScroll, useDragControls} from 'framer-motion';
 import { useState, useEffect } from 'react';
 import bgvd from './assets/bgvd.mp4';
 import bgimg from './assets/bgimg.png';
@@ -24,6 +24,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ContactForm from './components/ContactForm';
 import projectest from './assets/projectest.png';
 import projectgrad from './assets/projectgrad.png';
+import Footer from './components/footer.tsx';
 
 // Add project interface and list
 interface Project {
@@ -263,7 +264,7 @@ function App() {
         }}
       >
         <Nav isVideoEnded={isVideoEnded} onContactClick={() => setIsContactOpen(true)}/>
-        <section id='home' className="w-full h-dvh relative flex flex-col items-center justify-center fira overflow-hidden">
+        <section id='home' className="w-full h-dvh relative flex flex-col items-center justify-center  overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full z-0">
             <img 
               src={bgimg} 
@@ -338,7 +339,7 @@ function App() {
           </div>
         </section>
 
-        <section id='about' className='w-full h-full bg-black py-20 px-4 md:px-32 fira'>
+        <section id='about' className='w-full h-full bg-black py-20 px-4 md:px-32'>
           <motion.h1 
             style={{ position: 'relative' }}
             whileInView={{ y: [20, 0] }}
@@ -347,9 +348,9 @@ function App() {
           <motion.div className='bg-[#181818] w-full h-full rounded-3xl p-8 md:p-16 border-[1px] border-[#ffffff1a] relative overflow-hidden'>
             <div className="absolute -top-32 -left-32 w-64 md:w-80 h-80 rounded-full bg-gradient-to-br from-[#DE5068] to-[#1313db] opacity-25 blur-3xl pointer-events-none" />
             <div className="relative">
-              <h1 className='text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4'>WE ARE BUILT DIFFERENT</h1>
-              <p className='text-[0.75rem] md:text-lg text-white/80 leading-relaxed md:text-justify'>
-                While others chase trends, we focus on what actually works – immersive XR, unforgettable games, and 3D worlds built with precision. Our team of wizards <span className='italic'>(yes, we call them that)</span> thrives on innovation, precision, and a touch of magic—delivering not just projects, but unforgettable digital experiences. No empty promises, just exceptional craft and honest collaboration. <br/><br/> The secret? We care about the <span className='font-bold italic'>how</span> as much as the <span className='font-bold italic'>wow</span>. <br/> <a href='#projects' className='underline'>Check out our work</a>
+              <h1 className='text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4 '>WE ARE BUILT DIFFERENT</h1>
+              <p className='text-[0.75rem] md:text-lg text-white/80 leading-relaxed md:text-justify '>
+                While others chase trends, we focus on what actually works – immersive XR, unforgettable games, and 3D worlds built with precision. Our team of wizards <span className='italic'>(yes, we call them that)</span> thrives on innovation, precision, and a touch of magic—delivering not just projects, but unforgettable digital experiences. No empty promises, just exceptional craft and honest collaboration. <br/><br/> The secret? We care about the <span className='font-bold italic'>how</span> as much as the <span className='font-bold italic'>wow</span>. <br/> <a href='#projects' className='underline '>Check out our work</a>
               </p>
 
               <motion.div 
@@ -662,7 +663,7 @@ function App() {
                   alt="gradient overlay"
                   className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 />
-                <div className="absolute bottom-0 left-0 right-0 flex flex-row items-center justify-around p-6 font-mono">
+                <div className="absolute bottom-0 left-0 right-0 flex flex-row items-center justify-around p-6 ">
                   <h3 className="text-sm md:text-xl font-bold text-black">
                     {projects[currentProject].title}
                   </h3>
@@ -682,14 +683,101 @@ function App() {
           </div>
         </section>
 
-        <section id='testimonials' className='bg-black w-full h-dvh py-28 md:py-[4.5rem] px-6 md:px-32'>
+        <section id='testimonials' className='bg-black w-full min-h-dvh py-28 md:py-24 px-12 md:px-32 relative'>
           <motion.h1 
             style={{ position: 'relative' }}
             whileInView={{ y: [20, 0] }}
             transition={{ type: 'spring', stiffness: 50 }}
-            className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>Our Happy Clients</motion.h1>
+            className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center mb-8 md:mb-16'>Our Happy Clients</motion.h1>
 
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-12 lg:gap-24 px-4 mb-12 lg:mb-16">
+
+            <div className="w-full lg:w-1/2 max-w-xl relative lg:top-8">
+              <div className='absolute -top-8 lg:-top-12 -left-8 lg:-left-12 z-10'>
+                <img 
+                  src={test}  
+                  alt="Sarah Chen" 
+                  className='w-16 lg:w-20 h-16 lg:h-20 rounded-2xl object-cover' 
+                />
+              </div>
+              <div className="bg-white/20 rounded-3xl p-6 lg:p-8 flex flex-col justify-between h-full z-20 relative backdrop-blur-sm">
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className="text-white text-base lg:text-lg font-bold ">Sarah Chen<span className="text-white/80 text-[0.7rem] lg:text-sm font-normal">, Head of Innovation</span></h3>
+                    <div className="flex gap-1 ml-auto text-sm lg:text-base">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">★</span>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-white/80 text-sm lg:text-base leading-relaxed text-justify">
+                    Mana House delivered an exceptional VR experience for our product launch. The attention to detail and immersive quality were outstanding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-1/2 max-w-xl relative lg:-top-8">
+              <div className='absolute -top-8 -left-8 z-10 lg:hidden'>
+                <img 
+                  src={test}  
+                  alt="Sarah Chen" 
+                  className='w-16 h-16 rounded-2xl object-cover' 
+                />
+              </div>
+              <div className='absolute -bottom-12 -left-12 z-10 hidden lg:block'>
+                <img 
+                  src={test}  
+                  alt="Sarah Chen" 
+                  className='w-16 lg:w-20 h-16 lg:h-20 rounded-2xl object-cover' 
+                />
+              </div>
+              <div className="bg-white/20 rounded-3xl p-6 lg:p-8 flex flex-col justify-between h-full z-20 relative backdrop-blur-sm">
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className="text-white text-base lg:text-lg font-bold ">Alex Johnson<span className="text-white/80 text-[0.7rem] lg:text-sm font-normal">, CTO</span></h3>
+                    <div className="flex gap-1 ml-auto text-sm lg:text-base">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">★</span>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-white/80 text-sm lg:text-base leading-relaxed text-justify">
+                    The VR solutions provided by Mana House transformed our training programs. The level of engagement we've seen from our employees is unprecedented.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center px-4 lg:pt-12">
+            <div className="w-full max-w-xl relative lg:left-16">
+              <div className='absolute -top-8 lg:-top-12 -left-8 lg:-left-12 z-10'>
+                <img 
+                  src={test}  
+                  alt="Maria Garcia" 
+                  className='w-16 lg:w-20 h-16 lg:h-20 rounded-2xl object-cover' 
+                />
+              </div>
+              <div className="bg-white/20 rounded-3xl p-6 lg:p-8 flex flex-col justify-between h-full z-20 relative backdrop-blur-sm">
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className="text-white text-base lg:text-lg font-bold ">Maria Garcia<span className="text-white/80 text-[0.7rem] lg:text-sm font-normal">, CEO</span></h3>
+                    <div className="flex gap-1 ml-auto text-sm lg:text-base">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">★</span>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-white/80 text-sm lg:text-base leading-relaxed text-justify">
+                    Working with Mana House was a game-changer for our brand. Their immersive experiences helped us connect with our audience in ways we never thought possible.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
+        <Footer/>
       </motion.div>
 
       <ContactForm 
