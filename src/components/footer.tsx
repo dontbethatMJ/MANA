@@ -1,9 +1,20 @@
 import { FaLinkedin, FaDiscord, FaTwitter, FaGithub, FaYoutube } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import logo from '../assets/favicon.webp';
+import { useState } from 'react';
 
-const Footer = () => {
+interface FooterProps {
+  onContactClick: (email: string) => void;
+}
+
+const Footer = ({ onContactClick }: FooterProps) => {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onContactClick(email);
+  };
   
   const socialLinks = [
     { icon: <FaLinkedin className="text-xl" />, url: "#" },
@@ -44,7 +55,7 @@ const Footer = () => {
               <h4 className="text-lg font-semibold text-white mb-4">Explore</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#home" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
                     Home
                   </a>
                 </li>
@@ -79,12 +90,15 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer hover:line-through" onClick={() => alert("Not yet :(")}>
                     Careers
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a 
+                    onClick={() => onContactClick('')} 
+                    className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
+                  >
                     Contact
                   </a>
                 </li>
@@ -93,17 +107,19 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Start Your Project</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Build Your Project</h4>
             <p className="text-gray-400 mb-4 text-sm">
               Ready to create something extraordinary? Let's discuss your vision.
             </p>
-            <form className="flex flex-col sm:flex-row gap-2">
+            <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubmit}>
               <div className="relative flex-grow">
                 <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-700"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-700"
                   required
                 />
               </div>
