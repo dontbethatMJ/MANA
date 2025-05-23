@@ -17,7 +17,8 @@ const About = () => {
         <div className="relative">
           <h1 className='text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4'>WE ARE BUILT DIFFERENT</h1>
           <p className='text-[0.75rem] md:text-lg text-white/80 leading-relaxed md:text-justify'>
-            While others chase trends, we focus on what actually works – immersive XR, unforgettable games, and 3D worlds built with precision. Our team of wizards <span className='italic'>(yes, we call them that)</span> thrives on innovation, precision, and a touch of magic—delivering not just projects, but unforgettable digital experiences. No empty promises, just exceptional craft and honest collaboration. <br/><br/> The secret? We care about the <span className='font-bold italic'>how</span> as much as the <span className='font-bold italic'>wow</span>. <br/> <a href='#projects' className='underline'>Check out our work</a>
+          We're not just another digital agency — we're worldbuilders. At MANA House, we design immersive XR, cinematic trailers, and game-ready visuals with one mission: to make your ideas feel alive. With a sharp eye for interaction, detail, and flow, we help studios, startups, and storytellers turn vision into impact. <br/><br/> Whether it's VR mechanics, lighting a scene, or animating a world — we do it with intent, not just aesthetics. <br/><br/> Because here, immersion isn’t a feature — it’s the foundation.<br/>
+            <a href='#projects' className='underline'>Check out our work</a>
           </p>
 
           <motion.div 
@@ -91,31 +92,31 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-2xl md:text-4xl font-bold"
               >
-                <Counter end={100} />+
+                <Counter end={2} />+
+              </motion.h2>
+              <p className="text-sm md:text-base opacity-80">Years of<br/> Experience</p>
+            </div>
+            <div className="text-center">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-2xl md:text-4xl font-bold"
+              >
+                <Counter end={5} />+
+              </motion.h2>
+              <p className="text-sm md:text-base opacity-80">Clients</p>
+            </div>
+            <div className="text-center">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-2xl md:text-4xl font-bold"
+              >
+                <Counter end={10} />+
               </motion.h2>
               <p className="text-sm md:text-base opacity-80">Projects</p>
-            </div>
-            <div className="text-center">
-              <motion.h2 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="text-2xl md:text-4xl font-bold"
-              >
-                <Counter end={100} />+
-              </motion.h2>
-              <p className="text-sm md:text-base opacity-80">Users</p>
-            </div>
-            <div className="text-center">
-              <motion.h2 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="text-2xl md:text-4xl font-bold"
-              >
-                <Counter end={50} />+
-              </motion.h2>
-              <p className="text-sm md:text-base opacity-80">Likes</p>
             </div>
           </motion.div>
         </div>

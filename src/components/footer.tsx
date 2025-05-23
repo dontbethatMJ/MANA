@@ -86,7 +86,7 @@ const Footer = ({ onContactClick }: FooterProps) => {
                 </li>
                 <li>
                   <a href="#tools" className="text-gray-400 hover:text-blue-400 transition-colors">
-                    Tools Used
+                    Spells We Use
                   </a>
                 </li>
                 <li>
@@ -99,7 +99,7 @@ const Footer = ({ onContactClick }: FooterProps) => {
                     onClick={() => onContactClick('')} 
                     className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
                   >
-                    Contact
+                    Contact Us
                   </a>
                 </li>
               </ul>
@@ -107,9 +107,9 @@ const Footer = ({ onContactClick }: FooterProps) => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Build Your Project</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Ready to level up your project?</h4>
             <p className="text-gray-400 mb-4 text-sm">
-              Ready to create something extraordinary? Let's discuss your vision.
+              Or are you a startup struggling with Art/Development/Designing?
             </p>
             <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubmit}>
               <div className="relative flex-grow">

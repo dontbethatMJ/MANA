@@ -40,7 +40,7 @@ const Hero = ({ isVideoEnded }: HeroProps) => {
           transition={{ delay: isVideoEnded ? 0.6 : 0, duration: 1.5, type: "spring", stiffness: 100 }}
           className='text-sm md:text-xl text-white font-light'
         >
-          Beyond Reality, Beyond Imagination
+          Crafting Immersion Beyond Reality
         </motion.h3>
         <motion.a 
           href='#services'

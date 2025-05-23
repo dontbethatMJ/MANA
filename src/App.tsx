@@ -16,6 +16,7 @@ function App() {
   const [hasSeenVideo, setHasSeenVideo] = useState(true);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactEmail, setContactEmail] = useState('');
+  const [transformValue, setTransformValue] = useState('40%');
   const { scrollYProgress } = useScroll();
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const dragControls = useDragControls();
@@ -64,6 +65,20 @@ function App() {
     };
   }, [isContactOpen]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setTransformValue('85%');
+      } else {
+        setTransformValue('40%');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleVideoEnd = () => {
     setIsVideoEnded(true);
     const expirationDate = new Date();
@@ -101,7 +116,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ 
           opacity: isVideoEnded ? 1 : 0,
-          x: isContactOpen ? '40%' : 0
+          x: isContactOpen ? transformValue : 0
         }}
         transition={{ 
           duration: 1.5,

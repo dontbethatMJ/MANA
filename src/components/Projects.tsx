@@ -54,7 +54,7 @@ const Projects = () => {
         whileInView={{ y: [20, 0] }}
         transition={{ type: 'spring', stiffness: 50 }}
         className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>
-        Projects
+        Our Portfolio Arsenal
       </motion.h1>
       
       <div className='w-full h-[calc(100%-8rem)] flex items-center justify-center relative'>

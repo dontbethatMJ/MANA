@@ -89,7 +89,7 @@ const Tools = () => {
         whileInView={{ y: [20, 0] }}
         transition={{ type: 'spring', stiffness: 50 }}
         className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>
-        Tools We Use
+        Spells We Use
       </motion.h1>
       
       <div className="relative">

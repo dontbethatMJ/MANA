@@ -111,14 +111,16 @@ const ContactForm = ({ isOpen, onClose, initialEmail = '' }: ContactFormProps) =
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed left-0 top-0 h-full w-[60%] md:w-[40%] bg-transparent z-50 p-2 md:p-4 overflow-y-auto"
+            className="fixed left-0 top-0 h-full w-[50%] md:w-[40%] bg-transparent z-50 p-2 md:p-4 overflow-hidden"
           >
-            <div className="bg-[#181818]/50 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-[#ffffff1a] h-full">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 h-full">
+              <div className='w-32 md:w-40 h-32 md:h-40 absolute bg-black right-0 top-0 rounded-tr-3xl trin'></div>
+              <div className='w-28 md:w-36 h-28 md:h-36 absolute bg-white/10 right-0 top-0 rounded-tr-3xl trin'></div>
               <div className="flex justify-between items-center mb-8 md:mb-12">
                 <h2 className="text-xl md:text-3xl text-white iceland">Contact Us</h2>
                 <button
                   onClick={onClose}
-                  className="text-white/80 hover:text-white transition-colors"
+                  className="text-white/80 hover:text-white transition-colors z-50"
                 >
                   <svg
                     width="20"

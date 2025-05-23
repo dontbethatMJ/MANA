@@ -10,63 +10,55 @@ const Services = () => {
       description: "XR Development"
     },
     {
-      title: "Game Dev",
+      title: "Game Animation",
       image: test,
-      description: "Game Dev"
+      description: "Game Animation"
     },
     {
-      title: "Cinematics",
+      title: "Game Art",
       image: test,
-      description: "Cinematics"
+      description: "Game Art"
     },
     {
-      title: "Level Designing",
+      title: "Product Visualization",
       image: test,
-      description: "Level Designing"
-    },
-    {
-      title: "3D Modelling",
-      image: test,
-      description: "3D Modelling"
-    },
-    {
-      title: "3D Product Visualization",
-      image: test,
-      description: "3D Product Visualization"
+      description: "Product Visualization"
     }
   ];
 
   return (
-    <section id='services' className='w-full h-full bg-black py-28 md:py-[4.5rem] px-6 md:px-32'>
-      <motion.h1 
-        style={{ position: 'relative' }}
-        whileInView={{ y: [20, 0] }}
-        transition={{ type: 'spring', stiffness: 50 }}
-        className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>
-        Our Services
-      </motion.h1>
-      
-      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 px-4 md:px-8">
-        {services.map((service, index) => (
-          <div key={index} className="w-full aspect-square max-w-[200px] sm:max-w-[250px] md:max-w-[300px] mx-auto">
-            <TiltedCard
-              imageSrc={service.image}
-              altText={service.title}
-              captionText={service.title}
-              containerHeight="100%"
-              containerWidth="100%"
-              imageHeight="100%"
-              imageWidth="100%"
-              scaleOnHover={1.05}
-              rotateAmplitude={10}
-              showMobileWarning={false}
-              showTooltip={false}
-              displayOverlayContent={true}
-              overlayContent={service.description}
-            />
-          </div>
-        ))}
-      </motion.div>
+    <section id='services' className='w-full h-dvh flex items-center justify-center px-6 md:px-32 relative'>
+      <div className="w-full max-w-[1400px] relative z-10">
+        <motion.h1 
+          style={{ position: 'relative' }}
+          whileInView={{ y: [20, 0] }}
+          transition={{ type: 'spring', stiffness: 50 }}
+          className='text-white p-4 text-4xl md:text-6xl iceland text-center'>
+          What we offer
+        </motion.h1>
+        
+        <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-12">
+          {services.map((service, index) => (
+            <div key={index} className="w-full aspect-square max-w-[200px] sm:max-w-[250px] md:max-w-[300px] mx-auto">
+              <TiltedCard
+                imageSrc={service.image}
+                altText={service.title}
+                captionText={service.title}
+                containerHeight="100%"
+                containerWidth="100%"
+                imageHeight="100%"
+                imageWidth="100%"
+                scaleOnHover={1.05}
+                rotateAmplitude={10}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={true}
+                overlayContent={service.description}
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 };
