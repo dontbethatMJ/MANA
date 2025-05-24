@@ -151,7 +151,7 @@ function App() {
 
         <Testimonials />
 
-        <Footer onContactClick={(email) => {
+        <Footer onContactClick={(email: string) => {
           setContactEmail(email);
           setIsContactOpen(true);
         }}/>

@@ -2,7 +2,6 @@ import { FaLinkedin, FaDiscord, FaTwitter, FaGithub, FaYoutube } from 'react-ico
 import { FiMail } from 'react-icons/fi';
 import logo from '../assets/favicon.webp';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
 interface FooterProps {
   onContactClick: (email: string) => void;
