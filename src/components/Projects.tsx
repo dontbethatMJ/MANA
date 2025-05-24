@@ -12,7 +12,7 @@ interface Project {
   link: string;
 }
 
-const Projects = () => {
+const Projects: React.FC = () => {
   const [currentProject, setCurrentProject] = useState(0);
 
   const projects: Project[] = [

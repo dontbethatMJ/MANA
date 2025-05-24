@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import TiltedCard from '../blocks/Components/TiltedCard/TiltedCard';
 import test from '../assets/test.jpg';
 
-const Services = () => {
-  const services = [
+interface Service {
+  title: string;
+  image: string;
+  description: string;
+}
+
+const Services: React.FC = () => {
+  const services: Service[] = [
     {
       title: "XR Development",
       image: test,

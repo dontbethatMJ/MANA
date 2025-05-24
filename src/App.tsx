@@ -1,15 +1,15 @@
 import {motion, useTransform, useScroll, useDragControls} from 'framer-motion';
 import { useState, useEffect } from 'react';
-import bgvd from './assets/bgvd.mp4';
-import Nav from './components/Nav.tsx';
-import Hero from './components/Hero.tsx';
-import About from './components/About.tsx';
-import Services from './components/Services.tsx';
-import Tools from './components/Tools.tsx';
-import Projects from './components/Projects.tsx';
-import Testimonials from './components/Testimonials.tsx';
-import Footer from './components/Footer.tsx';
-import ContactForm from './components/ContactForm.tsx';
+import bgvd from '@/assets/bgvd.mp4';
+import Nav from '@/components/nav';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Services from '@/components/Services';
+import Tools from '@/components/Tools';
+import Projects from '@/components/Projects';
+import Testimonials from '@/components/Testimonials';
+import Footer from '@/components/footer';
+import ContactForm from '@/components/ContactForm';
 
 function App() {
   const [isVideoEnded, setIsVideoEnded] = useState(false);
@@ -151,7 +151,7 @@ function App() {
 
         <Testimonials />
 
-        <Footer onContactClick={(email) => {
+        <Footer onContactClick={(email: string) => {
           setContactEmail(email);
           setIsContactOpen(true);
         }}/>

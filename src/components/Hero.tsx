@@ -5,7 +5,7 @@ interface HeroProps {
   isVideoEnded: boolean;
 }
 
-const Hero = ({ isVideoEnded }: HeroProps) => {
+const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
   return (
     <section id='home' className="w-full h-dvh relative flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full z-0">

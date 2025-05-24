@@ -7,7 +7,7 @@ interface ContactFormProps {
   initialEmail?: string;
 }
 
-const ContactForm = ({ isOpen, onClose, initialEmail = '' }: ContactFormProps) => {
+const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose, initialEmail = '' }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: initialEmail,

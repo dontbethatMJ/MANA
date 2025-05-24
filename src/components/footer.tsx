@@ -7,7 +7,7 @@ interface FooterProps {
   onContactClick: (email: string) => void;
 }
 
-const Footer = ({ onContactClick }: FooterProps) => {
+const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   

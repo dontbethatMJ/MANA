@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import test from '../assets/test.jpg';
 
-const Testimonials = () => {
+const Testimonials: React.FC = () => {
   return (
     <section id='testimonials' className='bg-black w-full min-h-dvh py-28 md:py-24 px-12 md:px-32 relative'>
       <motion.h1 
