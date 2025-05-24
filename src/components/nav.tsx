@@ -12,7 +12,7 @@ interface NavProps {
   onContactClick: () => void;
 }
 
-const NavBar = ({ isVideoEnded, onContactClick }: NavProps) => {
+const Nav: React.FC<NavProps> = ({ isVideoEnded, onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const menuRef = useRef<HTMLDivElement>(null);
@@ -259,4 +259,4 @@ const NavBar = ({ isVideoEnded, onContactClick }: NavProps) => {
   );
 };
 
-export default NavBar;
+export default Nav;

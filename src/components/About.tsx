@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { FaLinkedin, FaDiscord, FaTwitter, FaGithub, FaYoutube } from 'react-icons/fa';
 import Counter from './Counter';
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <section id='about' className='w-full h-full bg-black py-20 px-4 md:px-32'>
       <motion.h1 
@@ -17,7 +17,7 @@ const About = () => {
         <div className="relative">
           <h1 className='text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4'>WE ARE BUILT DIFFERENT</h1>
           <p className='text-[0.75rem] md:text-lg text-white/80 leading-relaxed md:text-justify'>
-          We're not just another digital agency — we're worldbuilders. At MANA House, we design immersive XR, cinematic trailers, and game-ready visuals with one mission: to make your ideas feel alive. With a sharp eye for interaction, detail, and flow, we help studios, startups, and storytellers turn vision into impact. <br/><br/> Whether it's VR mechanics, lighting a scene, or animating a world — we do it with intent, not just aesthetics. <br/><br/> Because here, immersion isn’t a feature — it’s the foundation.<br/>
+          We're not just another digital agency — we're worldbuilders. At MANA House, we design immersive XR, cinematic trailers, and game-ready visuals with one mission: to make your ideas feel alive. With a sharp eye for interaction, detail, and flow, we help studios, startups, and storytellers turn vision into impact. <br/><br/> Whether it's VR mechanics, lighting a scene, or animating a world — we do it with intent, not just aesthetics. <br/><br/> Because here, immersion isn't a feature — it's the foundation.<br/>
             <a href='#projects' className='underline'>Check out our work</a>
           </p>
 

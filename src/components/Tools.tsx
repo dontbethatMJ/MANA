@@ -14,7 +14,7 @@ import unity from '../assets/Unity.svg';
 import unreal from '../assets/Unreal Engine1.svg';
 import vive from '../assets/Vive.svg';
 
-const Tools = () => {
+const Tools: React.FC = () => {
   const getRandomColor = () => {
     const colors = [
       '#FF6B6B',
