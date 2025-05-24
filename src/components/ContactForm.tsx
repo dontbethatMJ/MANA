@@ -201,6 +201,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose, initialEmail
                   />
                 </div>
 
+                {/* <div className="h-captcha" data-captcha="true"></div> */}
+
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
