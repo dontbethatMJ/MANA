@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import test from '../assets/test.jpg';
+import sarah from '../assets/sarahchen.jpg';
+import alex from '../assets/alexjohnson.jpg';
+import maria from '../assets/mariagarcia.jpg';
 
 const Testimonials: React.FC = () => {
   return (
@@ -21,7 +23,7 @@ const Testimonials: React.FC = () => {
         className="w-full lg:w-1/2 max-w-xl relative lg:top-8">
           <div className='absolute -top-8 lg:-top-12 -left-8 lg:-left-12 z-10'>
             <img 
-              src={test}  
+              src={sarah}  
               alt="Sarah Chen" 
               className='w-16 lg:w-20 h-16 lg:h-20 rounded-2xl object-cover' 
             />
@@ -52,15 +54,15 @@ const Testimonials: React.FC = () => {
         className="w-full lg:w-1/2 max-w-xl relative lg:-top-8">
           <div className='absolute -top-8 -left-8 z-10 lg:hidden'>
             <img 
-              src={test}  
-              alt="Sarah Chen" 
+              src={alex}  
+              alt="Alex Johnson" 
               className='w-16 h-16 rounded-2xl object-cover' 
             />
           </div>
           <div className='absolute -bottom-12 -left-12 z-10 hidden lg:block'>
             <img 
-              src={test}  
-              alt="Sarah Chen" 
+              src={alex}  
+              alt="Alex Johnson" 
               className='w-16 lg:w-20 h-16 lg:h-20 rounded-2xl object-cover' 
             />
           </div>
@@ -92,7 +94,7 @@ const Testimonials: React.FC = () => {
         className="w-full max-w-xl relative lg:left-16">
           <div className='absolute -top-8 lg:-top-12 -left-8 lg:-left-12 z-10'>
             <img 
-              src={test}  
+              src={maria}  
               alt="Maria Garcia" 
               className='w-16 lg:w-20 h-16 lg:h-20 rounded-2xl object-cover' 
             />
