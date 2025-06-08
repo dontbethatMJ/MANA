@@ -307,7 +307,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, activeTab, onTabChange }
       className="fixed inset-0 z-50 flex items-center justify-center p-4 rounded-xl"
       onClick={handleOverlayClick}
     >
-      <div className="bg-white/10 w-full max-w-4xl rounded-2xl relative backdrop-blur-lg max-h-[90vh] flex flex-col">
+      <div className="bg-white/10 w-full max-w-4xl rounded-2xl relative backdrop-blur-xl max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center p-3 md:p-4 border-b border-gray-800">
           <div className="flex space-x-2 md:space-x-4">
             {tabs.map((tab) => (

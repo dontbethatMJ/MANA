@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import projectest from '../assets/projectest.png';
+import project1 from '../assets/project1.webp';
+import project2 from '../assets/project2.jpg';
+import project3 from '../assets/project3.webp';
 import projectgrad from '../assets/projectgrad.png';
 import { useState } from 'react';
 
@@ -20,21 +22,21 @@ const Projects: React.FC = () => {
       id: 1,
       title: "Project One",
       description: "A revolutionary XR experience that pushes the boundaries of virtual reality.",
-      image: projectest,
+      image: project1,
       link: "https://project1.com"
     },
     {
       id: 2,
       title: "Project Two",
       description: "An immersive game that combines stunning visuals with engaging gameplay.",
-      image: projectest,
+      image: project2,
       link: "https://project2.com"
     },
     {
       id: 3,
       title: "Project Three",
       description: "A cutting-edge AR application that transforms how we interact with our environment.",
-      image: projectest,
+      image: project3,
       link: "https://project3.com"
     }
   ];
