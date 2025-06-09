@@ -1,4 +1,5 @@
 import {motion, useTransform, useScroll, useDragControls} from 'framer-motion';
+import Lenis from 'lenis'
 import { useState, useEffect } from 'react';
 import bgvd from '@/assets/bgvd.mp4';
 import Nav from '@/components/nav';
@@ -10,6 +11,7 @@ import Projects from '@/components/Projects';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/footer';
 import ContactForm from '@/components/ContactForm';
+import Stats from '@/components/Stats';
 
 function App() {
   const [isVideoEnded, setIsVideoEnded] = useState(false);
@@ -55,7 +57,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isContactOpen) {
+    if (!hasSeenVideo && !isVideoEnded) {
+      document.body.style.overflow = 'hidden';
+    } else if (isContactOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -63,7 +67,7 @@ function App() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isContactOpen]);
+  }, [hasSeenVideo, isVideoEnded, isContactOpen]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -78,6 +82,26 @@ function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.5,
+      smoothWheel: true,
+      wheelMultiplier: 1.0, 
+      touchMultiplier: 2.0,
+    })
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }   
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   const handleVideoEnd = () => {
     setIsVideoEnded(true);
@@ -142,6 +166,8 @@ function App() {
         <Hero isVideoEnded={isVideoEnded}/>
 
         <About/>
+
+        <Stats/>
 
         <Services/>
 

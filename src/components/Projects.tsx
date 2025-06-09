@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import projectest from '../assets/projectest.png';
+import project1 from '../assets/project3.webp';
+import project2 from '../assets/project2.jpg';
+import project3 from '../assets/project1.webp';
 import projectgrad from '../assets/projectgrad.png';
 import { useState } from 'react';
 
@@ -20,21 +22,21 @@ const Projects: React.FC = () => {
       id: 1,
       title: "Project One",
       description: "A revolutionary XR experience that pushes the boundaries of virtual reality.",
-      image: projectest,
+      image: project1,
       link: "https://project1.com"
     },
     {
       id: 2,
       title: "Project Two",
       description: "An immersive game that combines stunning visuals with engaging gameplay.",
-      image: projectest,
+      image: project2,
       link: "https://project2.com"
     },
     {
       id: 3,
       title: "Project Three",
       description: "A cutting-edge AR application that transforms how we interact with our environment.",
-      image: projectest,
+      image: project3,
       link: "https://project3.com"
     }
   ];
@@ -51,7 +53,7 @@ const Projects: React.FC = () => {
     <section id='projects' className='bg-black w-full h-full py-40 md:py-20 px-6 md:px-32'>
       <motion.h1 
         style={{ position: 'relative' }}
-        whileInView={{ y: [20, 0] }}
+        whileInView={{ y: [35, 0] }}
         transition={{ type: 'spring', stiffness: 50 }}
         className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>
         Our Portfolio Arsenal
@@ -62,7 +64,7 @@ const Projects: React.FC = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={prevProject}
-          className="absolute left-0 z-10 text-red-500/80 hover:text-red-500 transition-colors"
+          className="absolute left-0 z-10 text-accent1/80 hover:text-accent1 transition-colors"
         >
           <IoIosArrowBack size={40} />
         </motion.button>
@@ -71,7 +73,7 @@ const Projects: React.FC = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={nextProject}
-          className="absolute right-0 z-10 text-red-500/80 hover:text-red-500 transition-colors"
+          className="absolute right-0 z-10 text-accent1/80 hover:text-accent1 transition-colors"
         >
           <IoIosArrowForward size={40} />
         </motion.button>
@@ -95,7 +97,7 @@ const Projects: React.FC = () => {
               alt="gradient overlay"
               className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             />
-            <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center p-6">
+            <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center p-2 md:p-4">
               <h3 className="text-sm md:text-xl font-bold text-black">
                 {projects[currentProject].title}
               </h3>
@@ -112,6 +114,20 @@ const Projects: React.FC = () => {
             </div>
           </div>
         </motion.div>
+      </div>
+
+      <div className="flex justify-center gap-3 mt-4">
+        {projects.map((_, index) => (
+          <motion.button
+            key={index}
+            onClick={() => setCurrentProject(index)}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              currentProject === index ? 'bg-accent1' : 'bg-white/30'
+            }`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          />
+        ))}
       </div>
     </section>
   );
