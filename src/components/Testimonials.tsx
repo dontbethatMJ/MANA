@@ -8,7 +8,7 @@ const Testimonials: React.FC = () => {
     <section id='testimonials' className='bg-black w-full min-h-dvh py-28 md:py-24 px-12 md:px-32 relative'>
       <motion.h1 
         style={{ position: 'relative' }}
-        whileInView={{ y: [20, 0] }}
+        whileInView={{ y: [35, 0] }}
         transition={{ type: 'spring', stiffness: 50 }}
         className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center mb-8 md:mb-16'>
         Our Happy Clients

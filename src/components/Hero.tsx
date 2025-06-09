@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import bgimg from '../assets/bgimg.svg';
 
 interface HeroProps {
@@ -6,6 +6,14 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
+  const { scrollY } = useScroll();
+  
+  // Create different scroll speeds for each element
+  const manaY = useTransform(scrollY, [0, 1000], [0, -100]);
+  const houseY = useTransform(scrollY, [0, 1000], [0, -150]);
+  const taglineY = useTransform(scrollY, [0, 1000], [0, -200]);
+  const buttonY = useTransform(scrollY, [0, 1000], [0, -250]);
+
   return (
     <section id='home' className="w-full h-dvh relative flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full z-0">
@@ -17,6 +25,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: isVideoEnded ? 0 : 100, opacity: isVideoEnded ? 1 : 0 }}
         transition={{ delay: isVideoEnded ? 0.2 : 0, duration: 1.5, type: "spring", stiffness: 100 }}
+        style={{ y: manaY }}
         className="flex justify-between items-center px-8 w-2/3 relative z-20"
       >
         <div className="text-[3rem] md:text-[9rem] font-bold text-white iceland">M</div>
@@ -30,6 +39,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: isVideoEnded ? 0 : 100, opacity: isVideoEnded ? 1 : 0 }}
           transition={{ delay: isVideoEnded ? 0.4 : 0, duration: 1.5, type: "spring", stiffness: 100 }}
+          style={{ y: houseY }}
           className="text-xl md:text-5xl font-bold text-white iceland tracking-widest -mt-4 md:-mt-12"
         >
           HOUSE
@@ -38,6 +48,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: isVideoEnded ? 0 : 100, opacity: isVideoEnded ? 1 : 0 }}
           transition={{ delay: isVideoEnded ? 0.6 : 0, duration: 1.5, type: "spring", stiffness: 100 }}
+          style={{ y: taglineY }}
           className='text-sm md:text-xl text-white font-light'
         >
           Crafting Immersion Beyond Reality
@@ -46,6 +57,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
           href='#services'
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          style={{ y: buttonY }}
         >
           <motion.button
             initial={{ opacity: 0 }}

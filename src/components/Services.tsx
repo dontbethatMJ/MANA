@@ -104,7 +104,7 @@ const Services: React.FC = () => {
       <div className="w-full max-w-[1400px] relative z-30">
         <motion.h1 
           style={{ position: 'relative' }}
-          whileInView={{ y: [20, 0] }}
+          whileInView={{ y: [35, 0] }}
           transition={{ type: 'spring', stiffness: 50 }}
           className='text-white p-4 text-4xl md:text-6xl iceland text-center'>
           What we offer

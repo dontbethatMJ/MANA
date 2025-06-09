@@ -95,7 +95,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, activeTab, onTabChange }
             <section>
               <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">6. Your Rights</h3>
               <p className="text-sm md:text-base text-gray-300">
-                You have the right to access, update, or delete your personal information. Contact us at <a href="mailto:contact@manahouse.in" className="text-blue-400 hover:text-blue-300 transition-colors">contact@manahouse.in</a> for assistance.
+                You have the right to access, update, or delete your personal information. Contact us at <a href="mailto:contact@manahouse.in" className="text-accent1 hover:text-accent1/80 transition-colors">contact@manahouse.in</a> for assistance.
               </p>
             </section>
 
@@ -112,7 +112,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, activeTab, onTabChange }
                 For any questions or concerns, please contact us at:
               </p>
               <p className="text-sm md:text-base text-gray-300">
-                Email: <a href="mailto:contact@manahouse.in" className="text-blue-400 hover:text-blue-300 transition-colors">contact@manahouse.in</a>
+                Email: <a href="mailto:contact@manahouse.in" className="text-accent1 hover:text-accent1/80 transition-colors">contact@manahouse.in</a>
               </p>
             </section>
           </div>
@@ -201,7 +201,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, activeTab, onTabChange }
                 For questions or concerns regarding these Terms of Service, please contact us at:
               </p>
               <p className="text-sm md:text-base text-gray-300">
-                Email: <a href="mailto:contact@manahouse.in" className="text-blue-400 hover:text-blue-300 transition-colors">contact@manahouse.in</a>
+                Email: <a href="mailto:contact@manahouse.in" className="text-accent1 hover:text-accent1/80 transition-colors">contact@manahouse.in</a>
               </p>
             </section>
           </div>
@@ -291,7 +291,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, activeTab, onTabChange }
                 If you have any questions about this Cookies Policy, please contact us at:
               </p>
               <p className="text-sm md:text-base text-gray-300">
-                Email: <a href="mailto:contact@manahouse.in" className="text-blue-400 hover:text-blue-300 transition-colors">contact@manahouse.in</a>
+                Email: <a href="mailto:contact@manahouse.in" className="text-accent1 hover:text-accent1/80 transition-colors">contact@manahouse.in</a>
               </p>
             </section>
           </div>
@@ -316,7 +316,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, activeTab, onTabChange }
                 onClick={() => onTabChange(tab.id)}
                 className={`px-3 md:px-4 py-1.5 md:py-2 text-sm md:text-base rounded-xl transition-colors ${
                   activeTab === tab.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-accent1 text-white'
                     : 'text-gray-400 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -390,7 +390,7 @@ const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
                 <a
                   key={index}
                   href={social.url}
-                  className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
+                  className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-gray-800"
                   aria-label={`${social.icon.type} social link`}
                 >
                   {social.icon}
@@ -404,22 +404,22 @@ const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
               <h4 className="text-lg font-semibold text-white mb-4">Explore</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#services" className="text-gray-400 hover:text-white transition-colors">
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#projects" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#projects" className="text-gray-400 hover:text-white transition-colors">
                     Projects
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#testimonials" className="text-gray-400 hover:text-white transition-colors">
                     Testimonials
                   </a>
                 </li>
@@ -429,24 +429,24 @@ const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
               <h4 className="text-lg font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#about" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#about" className="text-gray-400 hover:text-white transition-colors">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#tools" className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href="#tools" className="text-gray-400 hover:text-white transition-colors">
                     Spells We Use
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer hover:line-through" onClick={() => alert("Not yet :(")}>
+                  <a className="text-gray-400 hover:text-white transition-colors cursor-pointer hover:line-through" onClick={() => alert("Not yet :(")}>
                     Careers
                   </a>
                 </li>
                 <li>
                   <a 
                     onClick={() => onContactClick('')} 
-                    className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
+                    className="text-gray-400 hover:text-white transition-colors cursor-pointer"
                   >
                     Contact Us
                   </a>
@@ -468,13 +468,13 @@ const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
                   placeholder="Your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-700"
+                  className="w-full pl-10 pr-4 py-2 bg-white/20 text-white focus:outline-none focus:ring-1 focus:ring-accent1 border border-gray-700"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors whitespace-nowrap"
+                className="px-6 py-2 bg-accent1 hover:bg-accent1/90 rounded-lg font-medium transition-colors whitespace-nowrap"
               >
                 Get in Touch
               </button>

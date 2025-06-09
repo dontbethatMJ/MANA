@@ -86,7 +86,7 @@ const Tools: React.FC = () => {
     <section id='tools' className='w-full h-full bg-black py-8 md:py-24'>
       <motion.h1 
         style={{ position: 'relative' }}
-        whileInView={{ y: [20, 0] }}
+        whileInView={{ y: [35, 0] }}
         transition={{ type: 'spring', stiffness: 50 }}
         className='text-white p-4 text-4xl md:text-6xl iceland px-6 md:px-32 text-center'>
         Spells We Use
@@ -102,7 +102,7 @@ const Tools: React.FC = () => {
           {tools.map((tool, index) => (
             <motion.div
               key={index}
-              className="aspect-square bg-[#181818] rounded-xl border-[1px] border-[#ffffff1a] flex items-center justify-center overflow-hidden relative group"
+              className="aspect-square bg-white/10 rounded-xl border-[1px] border-white/15 flex items-center justify-center overflow-hidden relative group"
               whileHover={{
                 boxShadow: `0 0 35px 5px ${getRandomColor()}60`,
                 transition: { duration: 0.3 }
