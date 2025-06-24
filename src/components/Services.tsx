@@ -1,42 +1,47 @@
 import { motion } from 'framer-motion';
 import TiltedCard from '../blocks/Components/TiltedCard/TiltedCard';
-import xr from '../assets/xrdevelopment.webp';
-import gameAnimation from '../assets/gameanimation.webp';
-import gameArt from '../assets/gameart.webp';
-import productVisualization from '../assets/productvisualization.webp';
+import xr from '../assets/xrdev.mp4';
+import xr2 from '../assets/xrdev2.mp4';
+import gameAnimation from '../assets/gameanim.mp4';
+import gameAnimation2 from '../assets/gameanim2.mp4';
+import gameArt from '../assets/gameart.mp4';
+import gameArt2 from '../assets/gameart2.mp4';
 
 interface Service {
   title: string;
-  image: string;
+  video: string;
+  video2: string;
   description: string;
+  subtitle: string;
 } 
 
 const Services: React.FC = () => {
   const services: Service[] = [
     {
       title: "XR Development",
-      image: xr,
-      description: "XR Development"
+      video: xr,
+      video2: xr2,
+      description: "XR Development",
+      subtitle: "VR/MR Immersive Experiences & Simulations"
     },
     {
       title: "Game Animation",
-      image: gameAnimation,
-      description: "Game Animation"
+      video: gameAnimation,
+      video2: gameAnimation2,
+      description: "Game Animation",
+      subtitle: "Animation Cinematics & Game Teasers"
     },
     {
       title: "Game Art",
-      image: gameArt,
-      description: "Game Art"
-    },
-    {
-      title: "Product Visualization",
-      image: productVisualization,
-      description: "Product Visualization"
+      video: gameArt,
+      video2: gameArt2,
+      description: "Game Art",
+      subtitle: "Digital Twins & Environment Art"
     }
   ];
 
   return (
-    <section id='services' className='w-full h-dvh flex items-center justify-center px-6 md:px-32 relative bg-black overflow-hidden'>
+    <section id='services' className='w-full h-fit md:h-dvh flex items-center justify-center px-6 md:px-32 relative bg-black overflow-hidden'>
       <motion.div
         animate={{
           x: ["-40vw", "0vw", "-40vw"],
@@ -106,21 +111,23 @@ const Services: React.FC = () => {
           style={{ position: 'relative' }}
           whileInView={{ y: [35, 0] }}
           transition={{ type: 'spring', stiffness: 50 }}
-          className='text-white p-4 text-4xl md:text-6xl iceland text-center'>
+          className='text-white p-4 text-4xl md:text-6xl iceland text-center mt-6'>
           What we offer
         </motion.h1>
         
-        <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-12">
+        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mt-6 md:mt-12 place-items-center">
           {services.map((service, index) => (
-            <div key={index} className="w-full aspect-square max-w-[200px] sm:max-w-[250px] md:max-w-[300px] mx-auto text-white">
+            <div key={index} className="w-full aspect-square max-w-[300px] md:max-w-[380px] mx-auto text-white flex items-center justify-center">
               <TiltedCard
-                imageSrc={service.image}
+                videoSrc={service.video}
+                fallbackVideoSrc={service.video2}
                 altText={service.title}
                 captionText={service.title}
+                subtitle={service.subtitle}
                 containerHeight="100%"
                 containerWidth="100%"
-                imageHeight="100%"
-                imageWidth="100%"
+                videoHeight="100%"
+                videoWidth="100%"
                 scaleOnHover={1.05}
                 rotateAmplitude={10}
                 showMobileWarning={false}

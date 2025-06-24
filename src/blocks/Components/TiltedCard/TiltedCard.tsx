@@ -1,19 +1,20 @@
-/*
-	Installed from https://reactbits.dev/ts/tailwind/
-*/
-
 import type { SpringOptions } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface TiltedCardProps {
-  imageSrc: React.ComponentProps<"img">["src"];
+  imageSrc?: React.ComponentProps<"img">["src"];
+  videoSrc?: string;
+  fallbackVideoSrc?: string;
   altText?: string;
   captionText?: string;
+  subtitle?: string;
   containerHeight?: React.CSSProperties["height"];
   containerWidth?: React.CSSProperties["width"];
   imageHeight?: React.CSSProperties["height"];
   imageWidth?: React.CSSProperties["width"];
+  videoHeight?: React.CSSProperties["height"];
+  videoWidth?: React.CSSProperties["width"];
   scaleOnHover?: number;
   rotateAmplitude?: number;
   showMobileWarning?: boolean;
@@ -30,12 +31,17 @@ const springValues: SpringOptions = {
 
 export default function TiltedCard({
   imageSrc,
+  videoSrc,
+  fallbackVideoSrc,
   altText = "Tilted card image",
   captionText = "",
+  subtitle = "",
   containerHeight = "300px",
   containerWidth = "100%",
   imageHeight = "300px",
   imageWidth = "300px",
+  videoHeight = "300px",
+  videoWidth = "300px",
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
   showMobileWarning = true,
@@ -57,6 +63,8 @@ export default function TiltedCard({
   });
 
   const [lastY, setLastY] = useState(0);
+  const [useFallback, setUseFallback] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   function handleMouse(e: React.MouseEvent<HTMLElement>) {
     if (!ref.current) return;
@@ -92,6 +100,32 @@ export default function TiltedCard({
     rotateFigcaption.set(0);
   }
 
+  // Fallback logic: if video doesn't start playing in 5s, use fallback
+  useEffect(() => {
+    if (!videoSrc || !fallbackVideoSrc) return;
+    let timer: NodeJS.Timeout;
+    const handleCanPlay = () => {
+      clearTimeout(timer);
+    };
+    const handleError = () => {
+      setUseFallback(true);
+    };
+    if (!useFallback && videoRef.current) {
+      videoRef.current.addEventListener('canplay', handleCanPlay);
+      videoRef.current.addEventListener('error', handleError);
+      timer = setTimeout(() => {
+        setUseFallback(true);
+      }, 5000);
+    }
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener('canplay', handleCanPlay);
+        videoRef.current.removeEventListener('error', handleError);
+      }
+      clearTimeout(timer);
+    };
+  }, [videoSrc, fallbackVideoSrc, useFallback]);
+
   return (
     <figure
       ref={ref}
@@ -113,26 +147,39 @@ export default function TiltedCard({
       <motion.div
         className="relative [transform-style:preserve-3d]"
         style={{
-          width: imageWidth,
-          height: imageHeight,
+          width: videoSrc ? videoWidth : imageWidth,
+          height: videoSrc ? videoHeight : imageHeight,
           rotateX,
           rotateY,
           scale,
         }}
       >
-        <motion.img
-          src={imageSrc}
-          alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
-          style={{
-            width: imageWidth,
-            height: imageHeight,
-          }}
-        />
+        {videoSrc ? (
+          <motion.video
+            ref={videoRef}
+            src={useFallback && fallbackVideoSrc ? fallbackVideoSrc : videoSrc}
+            className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
+            style={{ width: videoWidth, height: videoHeight }}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <motion.img
+            src={imageSrc}
+            alt={altText}
+            className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
+            style={{ width: imageWidth, height: imageHeight }}
+          />
+        )}
 
         {displayOverlayContent && overlayContent && (
           <motion.div className="absolute fira text-[0.7rem] md:text-base bottom-4 text-center w-full z-[2] will-change-transform [transform:translateZ(30px)]">
             {overlayContent}
+            {subtitle && (
+              <div className="text-[0.6rem] md:text-xs mt-0 md:mt-1 text-white/90 fira">{subtitle}</div>
+            )}
           </motion.div>
         )}
       </motion.div>
@@ -150,6 +197,7 @@ export default function TiltedCard({
           {captionText}
         </motion.figcaption>
       )}
+
     </figure>
   );
 }
