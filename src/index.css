@@ -41,3 +41,15 @@
 .trin {
   clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
+
+@font-face {
+  font-family: 'AlmarenaMonoDisplayLight';
+  src: url('./assets/fonts/almarena-mono-display-light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-almarena {
+  font-family: 'AlmarenaMonoDisplayLight', monospace;
+}

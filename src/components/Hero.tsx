@@ -3,9 +3,10 @@ import bgimg from '../assets/bgimg.svg';
 
 interface HeroProps {
   isVideoEnded: boolean;
+  onContactClick: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
+const Hero: React.FC<HeroProps> = ({ isVideoEnded, onContactClick }) => {
   const { scrollY } = useScroll();
   
   // Create different scroll speeds for each element
@@ -53,8 +54,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
         >
           Crafting Immersion Beyond Reality
         </motion.h3>
-        <motion.a 
-          href='#services'
+        <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           style={{ y: buttonY }}
@@ -64,10 +64,11 @@ const Hero: React.FC<HeroProps> = ({ isVideoEnded }) => {
             animate={{ opacity: isVideoEnded ? 1 : 0 }}
             transition={{ delay: isVideoEnded ? 0.8 : 0, duration: 0.5 }}
             className="px-8 py-2 md:px-12 md:py-3 text-black text-sm md:text-lg rounded-full bg-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.7)]"
+            onClick={onContactClick}
           >
-            Our Services
+            Get in Touch.
           </motion.button>
-        </motion.a>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import {motion, useTransform, useScroll, useDragControls} from 'framer-motion';
+import {motion, useTransform, useScroll} from 'framer-motion';
 import Lenis from 'lenis'
 import { useState, useEffect } from 'react';
 import bgvd from '@/assets/bgvd.mp4';
@@ -8,7 +8,7 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import Tools from '@/components/Tools';
 import Projects from '@/components/Projects';
-import Testimonials from '@/components/Testimonials';
+import Feedback from '@/components/Feedback';
 import Footer from '@/components/footer';
 import ContactForm from '@/components/ContactForm';
 import Stats from '@/components/Stats';
@@ -21,31 +21,6 @@ function App() {
   const [transformValue, setTransformValue] = useState('40%');
   const { scrollYProgress } = useScroll();
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const dragControls = useDragControls();
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(0);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    
-    if (isLeftSwipe) {
-      setIsContactOpen(true);
-    }
-  };
 
   useEffect(() => {
     const hasWatched = document.cookie.includes('hasWatchedIntro=true');
@@ -113,9 +88,6 @@ function App() {
   return (
     <div 
       className="relative bg-black"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
     >
       {!hasSeenVideo && (
         <motion.div 
@@ -151,19 +123,10 @@ function App() {
           }
         }}
         className="scrollbar-hide"
-        drag="x"
-        dragControls={dragControls}
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.1}
-        onDragEnd={(_, info) => {
-          if (info.offset.x > 100) {
-            setIsContactOpen(true);
-          }
-        }}
       >
         <Nav isVideoEnded={isVideoEnded} onContactClick={() => setIsContactOpen(true)}/>
         
-        <Hero isVideoEnded={isVideoEnded}/>
+        <Hero isVideoEnded={isVideoEnded} onContactClick={() => setIsContactOpen(true)}/>
 
         <About/>
 
@@ -175,7 +138,7 @@ function App() {
 
         <Projects/>
 
-        <Testimonials />
+        <Feedback />
 
         <Footer onContactClick={(email: string) => {
           setContactEmail(email);

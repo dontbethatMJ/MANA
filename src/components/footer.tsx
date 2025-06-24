@@ -419,8 +419,8 @@ const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials" className="text-gray-400 hover:text-white transition-colors">
-                    Testimonials
+                  <a href="#feedback" className="text-gray-400 hover:text-white transition-colors">
+                    Feedback
                   </a>
                 </li>
               </ul>
