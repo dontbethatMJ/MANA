@@ -5,7 +5,7 @@ import logo from "../assets/favicon.webp";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaDiscord, FaTwitter, FaGithub, FaYoutube } from 'react-icons/fa';
 
-const sections = ["home", "services", "projects", "testimonials"];
+const sections = ["home", "services", "projects", "feedback"];
 
 interface NavProps {
   isVideoEnded: boolean;
@@ -93,8 +93,8 @@ const Nav: React.FC<NavProps> = ({ isVideoEnded, onContactClick }) => {
             <a href="#projects" className={navLinkClass("projects")}>
               Projects
             </a>
-            <a href="#testimonials" className={navLinkClass("testimonials")}>
-              Testimonials
+            <a href="#feedback" className={navLinkClass("feedback")}>
+              Feedback
             </a>
           </div>
 
@@ -103,7 +103,7 @@ const Nav: React.FC<NavProps> = ({ isVideoEnded, onContactClick }) => {
               onClick={onContactClick}
               className="text-sm fira bg-transparent border-2 text-white rounded-full px-6 py-2 hover:bg-white hover:text-black transition-all duration-300"
             >
-              Contact Us
+              Contact Us Now
             </button>
           </div>
 
@@ -177,8 +177,8 @@ const Nav: React.FC<NavProps> = ({ isVideoEnded, onContactClick }) => {
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className={navLinkClass("testimonials")} onClick={closeMenu}>
-                  Testimonials
+                <a href="#feedback" className={navLinkClass("feedback")} onClick={closeMenu}>
+                  Feedback
                 </a>
               </li>
               <li>

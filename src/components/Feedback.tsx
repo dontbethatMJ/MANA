@@ -3,9 +3,9 @@ import sarah from '../assets/sarahchen.jpg';
 import alex from '../assets/alexjohnson.jpg';
 import maria from '../assets/mariagarcia.jpg';
 
-const Testimonials: React.FC = () => {
+const Feedback: React.FC = () => {
   return (
-    <section id='testimonials' className='bg-black w-full min-h-dvh py-28 md:py-24 px-12 md:px-32 relative'>
+    <section id='feedback' className='bg-black w-full min-h-dvh py-28 md:py-24 px-12 md:px-32 relative'>
       <motion.h1 
         style={{ position: 'relative' }}
         whileInView={{ y: [35, 0] }}
@@ -122,4 +122,4 @@ const Testimonials: React.FC = () => {
   );
 };
 
-export default Testimonials;
+export default Feedback;

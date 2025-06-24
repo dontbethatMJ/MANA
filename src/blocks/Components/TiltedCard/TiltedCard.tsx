@@ -175,10 +175,10 @@ export default function TiltedCard({
         )}
 
         {displayOverlayContent && overlayContent && (
-          <motion.div className="absolute fira text-[0.7rem] md:text-base bottom-4 text-center w-full z-[2] will-change-transform [transform:translateZ(30px)]">
+          <motion.div className="absolute font-almarena text-sm md:text-base bottom-4 text-center w-full z-[2] will-change-transform [transform:translateZ(30px)]">
             {overlayContent}
             {subtitle && (
-              <div className="text-[0.6rem] md:text-xs mt-0 md:mt-1 text-white/90 fira">{subtitle}</div>
+              <div className="text-[0.6rem] md:text-xs mt-0 text-white/90 font-almarena mb-0 md:mb-2">{subtitle}</div>
             )}
           </motion.div>
         )}

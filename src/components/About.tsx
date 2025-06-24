@@ -13,7 +13,7 @@ const Word = ({ children, progress, range }: {
     <span className="relative mx-1 lg:mx-1.5">
       <motion.span
         style={{ opacity: opacity }}
-        className="text-white lato"
+        className="text-white"
       >
         {children}
       </motion.span>
@@ -27,7 +27,7 @@ const About: React.FC = () => {
     target: targetRef,
   });
 
-  const text = "WE ARE BUILT DIFFERENT";
+  const text = "Why MANA HOUSE?";
   const words = text.split(" ");
 
   const contentOpacity1 = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
@@ -48,14 +48,14 @@ const About: React.FC = () => {
         <div className="sticky top-0 h-screen flex items-center justify-center">
           <div className="w-[95%] max-w-[48rem] mx-auto pt-20">
             <div className="relative mb-12">
-              <span className="flex flex-wrap justify-center text-3xl md:text-5xl lg:text-6xl font-bold text-white/30">
+              <span className="flex flex-wrap justify-center text-3xl md:text-5xl lg:text-6xl font-bold text-white/30 font-almarena">
                 {words.map((word, i) => (
-                  <span key={`preview-${i}`} className="mx-1 lg:mx-1.5 font-medium lato">
+                  <span key={`preview-${i}`} className="mx-1 lg:mx-1.5 font-medium">
                     {word}
                   </span>
                 ))}
               </span>
-              <span className="absolute top-0 left-0 right-0 flex flex-wrap justify-center text-3xl md:text-5xl lg:text-6xl font-bold">
+              <span className="absolute top-0 left-0 right-0 flex flex-wrap justify-center text-3xl md:text-5xl lg:text-6xl font-bold font-almarena">
                 {words.map((word, i) => {
                   const start = i / words.length;
                   const end = start + 1 / words.length;
